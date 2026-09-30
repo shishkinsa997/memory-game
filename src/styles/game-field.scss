@@ -1,0 +1,28 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.game {
+  @include container;
+  @include flex-center;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 1rem;
+
+  .game-grid {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .grid-8 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-10 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .grid-12 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
