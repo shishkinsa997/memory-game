@@ -18,27 +18,23 @@ $checkbox-color: #9c9c9c;
 $checkbox-color-light: #9c9c9c;
 
 $shadows-btn:
-  0.6rem 0.6rem 1rem #1c1c1c,
-  -0.6rem -0.6rem 1rem #2f2f2f;
+  0.3rem 0.3rem 1rem #1c1c1c,
+  -0.3rem -0.3rem 1rem #2f2f2f;
 $shadows-btn-hover:
-  0.8rem 0.8rem 1.5rem #121212,
-  -0.8rem -0.8rem 1.5rem #303030;
+  0.5rem 0.5rem 1rem #121212,
+  -0.5rem -0.5rem 1rem #303030;
 $shadows-btn-light:
   0.6rem 0.6rem 1rem #c5c5c5,
   -0.6rem -0.6rem 1rem #ffffff;
 $shadows-btn-light-hover:
-  0.8rem 0.8rem 1.5rem #c5c5c5,
-  -0.8rem -0.8rem 1.5rem #ffffff;
+  0.8rem 0.8rem 1rem #c5c5c5,
+  -0.8rem -0.8rem 1rem #ffffff;
 
-$shadows-check:
-  0.2rem 0.2rem 0.2rem #2f2f2f,
-  -0.2rem -0.2rem 0.25rem #1c1c1c;
+$shadows-card: 0 0 1.5rem rgba(255, 255, 255, 0.15);
 $shadows-check-light:
   0.2rem 0.2rem 0.25rem #c5c5c5,
   -0.2rem -0.2rem 0.25rem #ffffff;
-$shadows-check-hover:
-  inset 0.2rem 0.2rem 0.25rem #2f2f2f,
-  inset -0.2rem -0.2rem 0.25rem #1c1c1c;
+$shadows-card-hover: 0 0 1.5rem rgba(0, 0, 0, 0.7);
 $shadows-check-light-hover:
   inset 0.2rem 0.2rem 0.25rem #c5c5c5,
   inset -0.2rem -0.2rem 0.25rem #ffffff;

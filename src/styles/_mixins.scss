@@ -102,3 +102,380 @@
     display: none;
   }
 }
+
+@mixin frame {
+  @include flex-center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  border-radius: 1rem;
+  gap: 1rem;
+  background-color: v.$color-dark;
+
+  [data-theme="light"] & {
+    background-color: v.$color-light;
+  }
+}
+
+@mixin button {
+  border-radius: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: v.$btn-color;
+  cursor: pointer;
+  color: v.$color-white;
+  padding: 0.5rem 1rem;
+  transition:
+    box-shadow ease-in-out 0.3s,
+    background-color ease-in-out 0.1s,
+    letter-spacing ease-in-out 0.1s,
+    transform ease-in-out 0.5s;
+  box-shadow: v.$shadows-btn;
+
+  &:hover {
+    box-shadow: v.$shadows-btn-hover;
+    transform: scale(0.99);
+  }
+  &:active {
+    box-shadow:
+      v.$shadows-btn-hover,
+      v.$color-primary 0 0 1.5rem 0.25rem;
+    background-color: v.$color-primary;
+    transform: scale(0.95);
+  }
+
+  [data-theme="light"] & {
+    color: v.$color-black;
+    background-color: v.$btn-color-light;
+    box-shadow: v.$shadows-btn-light;
+    &:hover {
+      box-shadow: v.$shadows-btn-light-hover;
+    }
+    &:active {
+      box-shadow:
+        v.$shadows-btn-light-hover,
+        v.$color-primary-light 0 0 1.5rem 0.25rem;
+      background-color: v.$color-primary-light;
+    }
+  }
+}
+
+@mixin icon-btn {
+  display: grid;
+  place-items: center;
+  background-color: v.$btn-color;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: v.$shadows-btn;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(0.9);
+    box-shadow: v.$shadows-btn-hover;
+  }
+
+  [data-theme="light"] & {
+    background-color: v.$btn-color-light;
+    box-shadow: v.$shadows-btn-light;
+
+    &:hover {
+      box-shadow: v.$shadows-btn-light-hover;
+    }
+  }
+}
+
+@mixin btn-group {
+  display: flex;
+  justify-content: center;
+  max-width: 22rem;
+  width: 100%;
+  border-radius: 10rem;
+  background-color: v.$color-dark-50;
+  box-shadow: v.$shadows-btn;
+  font-size: 0.9rem;
+
+  [data-theme="light"] & {
+    background-color: v.$color-light;
+    box-shadow: v.$shadows-btn-light;
+  }
+
+  .btn-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transform-origin: center left;
+    transition: width 0.2s ease-in;
+    text-decoration: none;
+    color: inherit;
+    &:before {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      display: block;
+      border-radius: 10rem;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      transform: translateX(100%);
+      transition: transform 0.2s ease-in;
+      transform-origin: center right;
+      background-color: v.$btn-color;
+
+      [data-theme="light"] & {
+        background-color: v.$btn-color-light;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      width: 6.8rem;
+
+      &:before,
+      .btn-title {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .btn-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    flex-shrink: 0;
+    left: 0.7rem;
+    position: absolute;
+
+    [data-theme="light"] & {
+      filter: invert(1);
+    }
+  }
+
+  .btn-title {
+    transform: translateX(100%);
+    transition: transform 0.2s ease-in;
+    transform-origin: center right;
+    display: block;
+    text-align: center;
+    margin-left: 0.6rem;
+    text-indent: 1rem;
+    width: 100%;
+  }
+}
+
+@mixin btn-hint {
+  display: grid;
+  place-items: center;
+  background-color: v.$btn-color;
+  padding: 0.5rem;
+  border-radius: 50%;
+  box-shadow: v.$shadows-btn;
+  cursor: pointer;
+  font-weight: 700;
+  transition: box-shadow ease-in-out 0.3s;
+
+  &:hover {
+    box-shadow: v.$shadows-btn-hover;
+  }
+
+  [data-theme="light"] & {
+    background-color: v.$btn-color-light;
+    box-shadow: v.$shadows-btn-light;
+
+    &:hover {
+      box-shadow: v.$shadows-btn-light-hover;
+    }
+  }
+  [data-theme="light"] & svg path {
+    fill: v.$color-dark;
+  }
+}
+
+@mixin modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  @include flex-center;
+  padding: 1rem;
+
+  .modal-container {
+    @include flex-column();
+    min-width: 25rem;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 1rem;
+    background-color: v.$color-dark-80;
+
+    .modal-inner-container {
+      @include flex-between;
+      @include btn-section;
+      background-color: v.$color-dark;
+      border-radius: 1rem;
+      max-width: 30rem;
+      width: 100%;
+      gap: 2rem;
+    }
+  }
+
+  [data-theme="light"] & .modal-container {
+    background: v.$color-light;
+  }
+}
+
+@mixin btn-section {
+  max-width: 22rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  gap: 1rem;
+  background-color: v.$color-dark-50;
+  box-shadow: v.$shadows-btn;
+
+  [data-theme="light"] & {
+    background-color: v.$color-light;
+    box-shadow: v.$shadows-btn-light;
+  }
+}
+
+@mixin checkbox {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  right: 1rem;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  div {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    translate: -50% -50%;
+    height: 1.9em;
+    width: 1.9em;
+    border-radius: 100%;
+    background: v.$btn-color;
+    box-shadow:
+      rgba(255, 255, 255, 0.17) 0rem -0.15rem 0.15rem 0rem,
+      rgba(0, 0, 0, 0.17) 0rem 0.2rem 0.6rem 0.15rem;
+    transition: box-shadow 0.2s ease-in-out;
+    opacity: 0;
+
+    & svg {
+      margin: auto;
+    }
+
+    [data-theme="light"] & {
+      box-shadow:
+        0.2rem 0.2rem 0.3rem #c5c5c5,
+        -0.2rem -0.2rem 0.3rem #ffffff;
+      background: v.$btn-color-light;
+    }
+  }
+
+  input:checked ~ div {
+    box-shadow: inset 0.15rem 0.2rem 0.4rem rgb(5, 5, 5);
+
+    [data-theme="light"] & {
+      box-shadow:
+        inset 0.2rem 0.2rem 0.3rem #c5c5c5,
+        inset -0.15rem -0.2rem 0.3rem #ffffff;
+    }
+  }
+
+  & input:checked ~ div {
+    opacity: 1;
+  }
+}
+
+@mixin background {
+  --mx: 0;
+  --my: 0;
+  --bg-1: #0000;
+  --bg-2: #232020;
+  --bg-3: #1e1e1e;
+  --a-x: calc(var(--mx) * 8px);
+  --a-y: calc(var(--my) * 8px);
+  --b-x: calc(var(--mx) * -6px);
+  --b-y: calc(var(--my) * -6px);
+  --c-x: calc(var(--mx) * 4px);
+  --c-y: calc(var(--my) * 4px);
+
+  [data-theme="light"] & {
+    --bg-1: #0000;
+    --bg-2: #e8e8e8;
+    --bg-3: #dfdfdf;
+  }
+
+  background:
+    repeating-linear-gradient(
+        45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(0px + var(--c-x)) calc(0px + var(--c-y)),
+    repeating-linear-gradient(
+        45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(32px + var(--a-x)) calc(32px + var(--a-y)),
+    repeating-linear-gradient(
+        -45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(0px + var(--b-x)) calc(0px + var(--b-y)),
+    repeating-linear-gradient(
+        -45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(32px + var(--a-x)) calc(32px + var(--a-y)) var(--bg-3);
+
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  inset: 0;
+  z-index: -1;
+  // pointer-events: none;
+  transition: background-position 160ms linear;
+}
