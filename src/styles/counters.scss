@@ -1,0 +1,18 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.counters {
+  position: absolute;
+  @include flex-column;
+  align-items: start;
+  right: 0;
+  top: 1rem;
+  width: 10rem;
+  height: auto;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: v.$color-dark;
+  box-shadow: v.$shadows-btn;
+  border-radius: 1rem 0 0 1rem;
+  font-size: 1.2rem;
+}
