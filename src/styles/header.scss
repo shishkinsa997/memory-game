@@ -1,0 +1,30 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.header {
+  @include container;
+  @include flex-center;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 1rem;
+
+  .header-inner {
+    @include flex-center;
+    overflow: hidden;
+    gap: 2rem;
+    height: 5rem;
+    width: 100%;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    height: 0.1rem;
+    width: 100%;
+    background-color: v.$color-primary;
+  }
+}
