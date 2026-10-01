@@ -4,4 +4,14 @@ const counterDefault = {
   timer: "00:00",
 };
 
-export { counterDefault };
+const userDefault = {
+  difficulty: "easy",
+};
+
+const scoreDefault = {
+  easy: [],
+  normal: [],
+  hard: [],
+};
+
+export { counterDefault, userDefault, scoreDefault };
