@@ -120,6 +120,7 @@
     letter-spacing ease-in-out 0.1s,
     transform ease-in-out 0.5s;
   box-shadow: v.$shadows-btn;
+  min-width: 10rem;
 
   &:hover {
     box-shadow: v.$shadows-btn-hover;
@@ -149,6 +150,11 @@
   }
 }
 
+@mixin accent-btn {
+  color: v.$color-black;
+  background-color: v.$color-primary;
+}
+
 @mixin modal {
   width: 100dvw;
   height: 100dvh;
@@ -170,9 +176,9 @@
   .modal-container {
     @include flex-column();
     min-width: 25rem;
-    padding: 2rem;
+    padding: 2rem 3rem;
     gap: 1rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
     background-color: v.$color-dark-80;
 
     .modal-section {
