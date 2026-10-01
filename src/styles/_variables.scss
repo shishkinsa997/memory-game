@@ -31,13 +31,13 @@ $shadows-btn-light-hover:
   -0.8rem -0.8rem 1rem #ffffff;
 
 $shadows-card: 0 0 1.5rem rgba(255, 255, 255, 0.15);
-$shadows-check-light:
-  0.2rem 0.2rem 0.25rem #c5c5c5,
-  -0.2rem -0.2rem 0.25rem #ffffff;
+$shadows-tabs-active:
+  0.2rem 0.2rem 0.25rem #373737,
+  -0.2rem -0.2rem 0.25rem #000000;
 $shadows-card-hover: 0 0 1.5rem rgba(0, 0, 0, 0.7);
-$shadows-check-light-hover:
-  inset 0.2rem 0.2rem 0.25rem #c5c5c5,
-  inset -0.2rem -0.2rem 0.25rem #ffffff;
+$shadows-tabs:
+  inset 0.2rem 0.2rem 0.25rem #191919,
+  inset -0.2rem -0.2rem 0.25rem #181818;
 
 $mobile_s: 380px;
 $mobile_m: 560px;

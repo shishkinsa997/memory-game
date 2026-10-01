@@ -8,12 +8,11 @@
   left: 0;
   z-index: 10;
   padding: 1rem;
+  height: 5rem;
 
   .header-inner {
     @include flex-center;
-    overflow: hidden;
     gap: 2rem;
-    height: 3rem;
     width: 100%;
   }
 
@@ -25,5 +24,32 @@
     height: 0.1rem;
     width: 100dvw;
     background-color: v.$color-primary;
+  }
+
+  .new-game {
+    @include accent-btn;
+  }
+
+  .filter-bar {
+    @include flex-between;
+    background-color: v.$color-black;
+    box-shadow: v.$shadows-tabs;
+    padding: 0.3rem 0.5rem;
+    border-radius: 2rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .filter-tab-active {
+    background-color: v.$color-dark;
+  }
+
+  @media (orientation: portrait) {
+    .header-inner {
+      height: 12dvw;
+    }
   }
 }
