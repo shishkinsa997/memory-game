@@ -9,7 +9,7 @@ const pair = [null, null];
 function renderGameField({ counter, user, timer }) {
   const cardsArray = [...Object.keys(cards)];
   const numberOfCards =
-    user?.difficulty === "easy" ? 8 : user?.difficulty === "normal" ? 10 : 12;
+    user?.difficulty === "easy" ? 8 : user?.difficulty === "normal" ? 15 : 21;
 
   const gameField = el("div", {
     className: "game",
@@ -61,7 +61,9 @@ function renderGameField({ counter, user, timer }) {
           b.el.classList.remove("is-flipped");
           pair[0] = null;
           pair[1] = null;
-          gameGrid.style = "pointer-events: auto;";
+          setTimeout(() => {
+            gameGrid.style = "pointer-events: auto;";
+          }, 500);
         }, 800);
       }
     }
@@ -72,6 +74,7 @@ function renderGameField({ counter, user, timer }) {
     const score = JSON.parse(localStorage.getItem("score"));
     const gameOverModal = document.getElementById("game-over");
     gameOverModal.showModal();
+    document.documentElement.style = "overflow: hidden";
     updateGameOver({ counter });
     const difficulty = user.difficulty;
 
