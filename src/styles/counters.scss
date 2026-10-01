@@ -19,6 +19,9 @@
   pointer-events: none;
 
   @media (orientation: portrait) {
+    flex-direction: row;
+    width: 20rem;
+    gap: 1rem;
     right: 50%;
     transform: translate(50%, 50%);
     bottom: 6rem;

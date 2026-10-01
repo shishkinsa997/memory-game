@@ -1,7 +1,6 @@
 import "@/styles/card.scss";
 import { el } from "@/js/utils/utils.js";
 import { renderIcon } from "@/js/svgCards/renderIcon.js";
-import { pair } from "./GameField.js";
 
 export default function renderCard({ cardName, onClick }) {
   const card = el("button", {
