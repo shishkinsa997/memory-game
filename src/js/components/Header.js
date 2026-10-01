@@ -1,6 +1,7 @@
 import "@/styles/header.scss";
 import { el } from "@/js/utils/utils.js";
 import renderGameScreen from "@/js/screens/GameScreen.js";
+import { updateBoard } from "@/js/components/Leaderboard.js";
 import { counterDefault } from "@/js/state.js";
 
 export default function renderHeader() {
@@ -10,24 +11,26 @@ export default function renderHeader() {
   const headerInner = el("div", {
     className: "header-inner",
   });
-  const newGame = el("button", {
+  const newGameBtn = el("button", {
     className: "new-game btn",
     text: "New Game",
   });
-  const leaderBoard = el("button", {
+  const leaderBoardBtn = el("button", {
     className: "leader-board btn",
     text: "Leaderboard",
   });
 
-  newGame.addEventListener("click", () => {
+  newGameBtn.addEventListener("click", () => {
     document.getElementById("game-screen").remove();
     document.getElementById("app").append(renderGameScreen({ counterDefault }));
   });
-  leaderBoard.addEventListener("click", () => {
-    console.log("lead");
+  leaderBoardBtn.addEventListener("click", () => {
+    updateBoard();
+    const leaderBoard = document.getElementById("leaderboard");
+    leaderBoard.showModal();
   });
 
-  headerInner.append(newGame, leaderBoard);
+  headerInner.append(newGameBtn, leaderBoardBtn);
   header.append(headerInner);
 
   return header;

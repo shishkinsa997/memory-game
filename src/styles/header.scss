@@ -2,7 +2,6 @@
 @use "_mixins.scss" as *;
 
 .header {
-  @include container;
   @include flex-center;
   position: relative;
   top: 0;
@@ -14,7 +13,7 @@
     @include flex-center;
     overflow: hidden;
     gap: 2rem;
-    height: 5rem;
+    height: 3rem;
     width: 100%;
   }
 
@@ -24,7 +23,7 @@
     left: 0;
     bottom: 0;
     height: 0.1rem;
-    width: 100%;
+    width: 100dvw;
     background-color: v.$color-primary;
   }
 }
