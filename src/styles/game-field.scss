@@ -4,11 +4,14 @@
 .game {
   @include container;
   @include flex-center;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 10;
   padding: 1rem;
+  width: 60dvw;
+  min-width: 500px;
+  max-width: 800px;
+
+  @media (orientation: portrait) {
+    min-width: 95dvw;
+  }
 
   .game-grid {
     display: grid;

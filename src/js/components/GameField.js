@@ -2,24 +2,26 @@ import "@/styles/game-field.scss";
 import { el } from "@/js/utils/utils.js";
 import { getRandomItems } from "@/js/utils/getRandom.js";
 import renderCard from "@/js/components/Card.js";
+import { updateGameOver } from "@/js/components/GameOver.js";
 import cards from "@/js/svgCards/cards.js";
 const pair = [null, null];
 
-function renderGameField({ counter }) {
+function renderGameField({ counter, user, timer }) {
+  const cardsArray = [...Object.keys(cards)];
+  const numberOfCards =
+    user?.difficulty === "easy" ? 8 : user?.difficulty === "normal" ? 10 : 12;
+
   const gameField = el("div", {
     className: "game",
     id: "game",
   });
   const gameGrid = el("div", {
     id: "game-grid",
-    className: "game-grid grid-8",
+    className: `game-grid grid-${numberOfCards}`,
   });
 
-  const cardsArray = [...Object.keys(cards)];
-
-  const gameCards = getRandomItems(cardsArray, 8);
+  const gameCards = getRandomItems(cardsArray, numberOfCards);
   gameCards.push(...gameCards);
-  console.log(gameCards);
 
   getRandomItems(gameCards).forEach((c) => {
     gameGrid.append(
@@ -47,6 +49,9 @@ function renderGameField({ counter }) {
         pair[0] = null;
         pair[1] = null;
         counter.pairs++;
+        if (counter.pairs === numberOfCards) {
+          initGameOver();
+        }
       } else {
         const [a, b] = pair;
         gameGrid.style = "pointer-events: none;";
@@ -61,6 +66,23 @@ function renderGameField({ counter }) {
       }
     }
   }
+
+  const initGameOver = () => {
+    clearInterval(timer);
+    const score = JSON.parse(localStorage.getItem("score"));
+    const gameOverModal = document.getElementById("game-over");
+    gameOverModal.showModal();
+    updateGameOver({ counter });
+    const difficulty = user.difficulty;
+
+    score[difficulty].push({
+      id: Date.now(),
+      steps: counter.steps,
+      timer: counter.timer,
+    });
+
+    localStorage.setItem("score", JSON.stringify(score));
+  };
 
   gameField.append(gameGrid);
 
