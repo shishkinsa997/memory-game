@@ -6,6 +6,7 @@
   margin: 0;
   aspect-ratio: 1/1;
   perspective: 1000px;
+  width: 100%;
 
   .card-inner {
     position: relative;
@@ -15,7 +16,8 @@
     transition:
       transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1),
       box-shadow 0.2s;
-    width: 8rem;
+    max-width: 8rem;
+    min-width: 100%;
     border-radius: 1rem;
     box-shadow: v.$shadows-card;
   }
@@ -23,6 +25,7 @@
   .face,
   .backdrop {
     position: absolute;
+    width: 100%;
     inset: 0;
     border-radius: 1rem;
     backface-visibility: hidden;

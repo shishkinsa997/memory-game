@@ -6,13 +6,23 @@
   @include flex-column;
   align-items: start;
   right: 0;
-  top: 1rem;
+  top: 10rem;
+  z-index: 20;
   width: 10rem;
   height: auto;
   gap: 0.5rem;
   padding: 1rem;
-  background-color: v.$color-dark;
+  background-color: rgba(0, 0, 0, 0.5);
   box-shadow: v.$shadows-btn;
   border-radius: 1rem 0 0 1rem;
   font-size: 1.2rem;
+  pointer-events: none;
+
+  @media (orientation: portrait) {
+    right: 50%;
+    transform: translate(50%, 50%);
+    bottom: 6rem;
+    top: auto;
+    border-radius: 1rem;
+  }
 }
