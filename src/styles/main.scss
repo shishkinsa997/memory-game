@@ -31,7 +31,6 @@ body {
 
 main {
   @include flex-column;
-  position: relative;
   gap: 6.25rem;
   margin: 1.25rem 0 6.25rem;
 }
@@ -48,10 +47,6 @@ button {
   cursor: pointer;
 }
 
-li {
-  list-style: none;
-}
-
 .section {
   @include container;
   @include flex-center;
@@ -60,4 +55,10 @@ li {
 
 .btn {
   @include button;
+}
+
+dialog {
+  & > * {
+    color: v.$color-light;
+  }
 }
