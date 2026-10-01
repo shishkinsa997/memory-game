@@ -47,10 +47,14 @@ function renderLeaderboard() {
   });
 
   updateBoard();
-  leaderCloseBtn.addEventListener("click", () => leaderModal.close());
+  leaderCloseBtn.addEventListener("click", () => {
+    leaderModal.close();
+    document.documentElement.style = "overflow: auto";
+  });
   leaderModal.addEventListener("click", (e) => {
     if (e.target === leaderModal) {
       leaderModal.close();
+      document.documentElement.style = "overflow: auto";
     }
   });
 
