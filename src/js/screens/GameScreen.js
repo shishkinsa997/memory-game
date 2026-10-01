@@ -9,6 +9,7 @@ export default function renderGameScreen({ counterDefault }) {
     id: "game-screen",
   });
   const counterCopy = { ...counterDefault };
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const start = Date.now();
 
@@ -26,8 +27,6 @@ export default function renderGameScreen({ counterDefault }) {
 
   const counters = renderCounters({ counter });
   updateCounters = counters.update;
-  console.log("counters.update", counters);
-  console.log("updateCounters", updateCounters);
 
   const timer = setInterval(() => {
     const total = Math.floor(Date.now() - start);
@@ -35,7 +34,10 @@ export default function renderGameScreen({ counterDefault }) {
   }, 1000);
   timer;
 
-  gameScreen.append(renderGameField({ counter }), counters.element);
+  gameScreen.append(
+    renderGameField({ counter, user, timer }),
+    counters.element,
+  );
 
   return gameScreen;
 }

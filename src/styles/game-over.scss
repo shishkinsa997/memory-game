@@ -1,0 +1,9 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.game-over {
+  @include modal;
+  .game-over-inner {
+    @include flex-center;
+  }
+}
