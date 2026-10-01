@@ -16,5 +16,12 @@ function formatMs(ms) {
   const ss = String(total % 60).padStart(2, "0");
   return `${mm}:${ss}`;
 }
+function formatDate(ms) {
+  const date = new Date(ms);
+  const dd = String(date.getDate()).padStart(2, "0");
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const yyyy = date.getFullYear();
+  return `${dd}.${mm}.${yyyy}`;
+}
 
-export { el, formatMs };
+export { el, formatMs, formatDate };
