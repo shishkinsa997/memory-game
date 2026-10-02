@@ -18,6 +18,9 @@
     width: 100%;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
+    @media (orientation: portrait) {
+      gap: 0.5rem;
+    }
   }
 
   .grid-8 {

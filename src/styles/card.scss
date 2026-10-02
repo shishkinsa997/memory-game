@@ -30,6 +30,9 @@
     border-radius: 1rem;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    @media (orientation: portrait) {
+      border-radius: 0.5rem;
+    }
   }
 
   .face {
@@ -37,6 +40,9 @@
     padding: 1rem;
     background-color: #fff;
     transform: rotateY(180deg);
+    @media (orientation: portrait) {
+      padding: 0.2rem;
+    }
   }
 
   .backdrop {
