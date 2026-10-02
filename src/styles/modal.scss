@@ -1,0 +1,41 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.modal {
+  @include modal;
+  .modal-container {
+    max-height: 70dvh;
+    @include flex-center;
+  }
+  .modal-btn-container {
+    @include flex-center;
+    gap: 2rem;
+    width: 100%;
+  }
+}
+
+.leaderboard {
+  .leaderboard-li {
+    margin-left: 1.5rem;
+    &::marker {
+      color: v.$color-primary;
+    }
+  }
+  .leaderboard-list {
+    @include no-scroll;
+    box-sizing: content-box;
+    text-transform: capitalize;
+    overflow-x: auto;
+    min-height: 7dvh;
+
+    .review {
+      color: #ffa5a5a2;
+    }
+  }
+}
+
+.game-over {
+  .new-game {
+    @include accent-btn;
+  }
+}

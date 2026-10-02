@@ -1,4 +1,5 @@
-import "@/styles/leaderboard.scss";
+import "@/styles/modal.scss";
+import { renderModal } from "@/js/components/Modal.js";
 import { el, formatDate } from "@/js/utils/utils.js";
 
 const leaderEasy = el("ol", {
@@ -22,6 +23,7 @@ const leaderHard = el("ol", {
     "data-difficulty": "hard",
   },
 });
+
 const createLi = (li) => {
   return el("li", {
     className: `leaderboard-li ${li.isReview ? "review" : ""}`,
@@ -30,44 +32,14 @@ const createLi = (li) => {
 };
 
 function renderLeaderboard() {
-  const leaderModal = el("dialog", {
-    className: "leaderboard",
-    id: "leaderboard",
-  });
-  const leaderInner = el("div", {
-    className: "modal-container leaderboard-inner",
-  });
-  const leaderTitle = el("h2", {
-    className: "modal-title leaderboard-title",
-    text: "Leaderboard",
-  });
-  const leaderCloseBtn = el("button", {
-    className: "btn leaderboard-btn ",
-    text: "Close",
+  const LeaderboardModal = renderModal({
+    name: "leaderboard",
+    title: "Leaderboard",
+    content: [leaderEasy, leaderNormal, leaderHard],
   });
 
   updateBoard();
-  leaderCloseBtn.addEventListener("click", () => {
-    leaderModal.close();
-    document.documentElement.style = "overflow: auto";
-  });
-  leaderModal.addEventListener("click", (e) => {
-    if (e.target === leaderModal) {
-      leaderModal.close();
-      document.documentElement.style = "overflow: auto";
-    }
-  });
-
-  leaderInner.append(
-    leaderTitle,
-    leaderEasy,
-    leaderNormal,
-    leaderHard,
-    leaderCloseBtn,
-  );
-  leaderModal.append(leaderInner);
-
-  return leaderModal;
+  return LeaderboardModal;
 }
 
 const updateBoard = () => {

@@ -4,6 +4,7 @@ import { getNumberOfCards } from "@/js/utils/getNumberOfCards.js";
 import { getRandomItems } from "@/js/utils/getRandom.js";
 import renderCard from "@/js/components/Card.js";
 import { updateGameOver } from "@/js/components/GameOver.js";
+import { showModal } from "@/js/components/Modal.js";
 import cards from "@/js/svgCards/cards.js";
 const pair = [null, null];
 
@@ -74,8 +75,7 @@ function renderGameField({ counter, user, timer }) {
     clearInterval(timer);
     const score = JSON.parse(localStorage.getItem("score"));
     const gameOverModal = document.getElementById("game-over");
-    gameOverModal.showModal();
-    document.documentElement.style = "overflow: hidden";
+    showModal(gameOverModal);
     updateGameOver({ counter });
     const difficulty = user?.difficulty;
     const game = {

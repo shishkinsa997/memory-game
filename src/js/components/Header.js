@@ -2,6 +2,7 @@ import "@/styles/header.scss";
 import { el } from "@/js/utils/utils.js";
 import renderGameScreen from "@/js/screens/GameScreen.js";
 import { updateBoard } from "@/js/components/Leaderboard.js";
+import { showModal } from "@/js/components/Modal.js";
 import { counterDefault } from "@/js/state.js";
 
 export default function renderHeader() {
@@ -53,8 +54,9 @@ export default function renderHeader() {
   leaderBoardBtn.addEventListener("click", () => {
     updateBoard();
     const leaderBoard = document.getElementById("leaderboard");
-    leaderBoard.showModal();
-    document.documentElement.style = "overflow: hidden";
+    showModal(leaderBoard);
+    // leaderBoard.showModal();
+    // document.documentElement.style = "overflow: hidden";
   });
   ["easy", "normal", "hard", "review"].forEach((d) => {
     filterBar.append(createFilterTab(d));
