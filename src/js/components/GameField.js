@@ -8,6 +8,7 @@ import cards from "@/js/svgCards/cards.js";
 const pair = [null, null];
 
 function renderGameField({ counter, user, timer }) {
+  pair[0] = null;
   const cardsArray = [...Object.keys(cards)];
   const numberOfCards = getNumberOfCards(user);
 
