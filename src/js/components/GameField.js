@@ -85,7 +85,7 @@ function renderGameField({ counter, user, timer }) {
     };
 
     if (difficulty === "review") {
-      score["easy"].push(game);
+      score["easy"].push({ ...game, isReview: true });
     } else {
       score[difficulty]?.push(game);
     }

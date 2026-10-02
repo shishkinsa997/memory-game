@@ -24,8 +24,8 @@ const leaderHard = el("ol", {
 });
 const createLi = (li) => {
   return el("li", {
-    className: "leaderboard-li ",
-    text: `Steps: ${li.steps} • Time: ${li.timer} • Date: ${formatDate(li.id)}`,
+    className: `leaderboard-li ${li.isReview ? "review" : ""}`,
+    text: `Steps: ${li.steps} • ${li.isReview ? "review" : "Time: " + li.timer} • Date: ${formatDate(li.id)}`,
   });
 };
 
