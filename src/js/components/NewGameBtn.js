@@ -14,11 +14,18 @@ export default function renderNewGameBtn() {
       m.close();
       document.documentElement.style = "overflow: auto";
     });
+    const game = document.getElementById("game");
+    game.style.transform = "translateY(-100dvh)";
 
     setTimeout(() => {
       const gameScreen = renderGameScreen({ counterDefault });
+      const game = gameScreen.childNodes[0];
+      game.style.transform = "translateY(-100dvh)";
       document.getElementById("game-screen").remove();
       document.getElementById("app").append(gameScreen);
+      setTimeout(() => {
+        game.style.transform = "translateY(0)";
+      }, 10);
     }, 500);
   });
 
