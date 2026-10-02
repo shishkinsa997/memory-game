@@ -1,5 +1,6 @@
 import "@/styles/game-field.scss";
 import { el } from "@/js/utils/utils.js";
+import { getNumberOfCards } from "@/js/utils/getNumberOfCards.js";
 import { getRandomItems } from "@/js/utils/getRandom.js";
 import renderCard from "@/js/components/Card.js";
 import { updateGameOver } from "@/js/components/GameOver.js";
@@ -8,8 +9,7 @@ const pair = [null, null];
 
 function renderGameField({ counter, user, timer }) {
   const cardsArray = [...Object.keys(cards)];
-  const numberOfCards =
-    user?.difficulty === "easy" ? 8 : user?.difficulty === "normal" ? 15 : 21;
+  const numberOfCards = getNumberOfCards(user);
 
   const gameField = el("div", {
     className: "game",
@@ -76,14 +76,18 @@ function renderGameField({ counter, user, timer }) {
     gameOverModal.showModal();
     document.documentElement.style = "overflow: hidden";
     updateGameOver({ counter });
-    const difficulty = user.difficulty;
-
-    score[difficulty].push({
+    const difficulty = user?.difficulty;
+    const game = {
       id: Date.now(),
       steps: counter.steps,
       timer: counter.timer,
-    });
+    };
 
+    if (difficulty === "review") {
+      score["easy"].push(game);
+    } else {
+      score[difficulty]?.push(game);
+    }
     localStorage.setItem("score", JSON.stringify(score));
   };
 

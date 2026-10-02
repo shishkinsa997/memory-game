@@ -56,7 +56,7 @@ export default function renderHeader() {
     leaderBoard.showModal();
     document.documentElement.style = "overflow: hidden";
   });
-  ["easy", "normal", "hard"].forEach((d) => {
+  ["easy", "normal", "hard", "review"].forEach((d) => {
     filterBar.append(createFilterTab(d));
   });
   headerInner.append(newGameBtn, leaderBoardBtn, filterBar);
