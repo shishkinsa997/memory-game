@@ -1,0 +1,274 @@
+@use "_variables.scss" as v;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin container {
+  // max-width: 1440px;
+  margin: 0 auto;
+}
+
+@mixin inter {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+@mixin italic {
+  font-style: italic;
+}
+
+@mixin mobile {
+  @media (max-width: v.$mobile) {
+    @content;
+  }
+}
+
+@mixin mobile-l {
+  @media (max-width: v.$mobile-l) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: v.$tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-l {
+  @media (max-width: v.$tablet-l) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: v.$laptop) {
+    @content;
+  }
+}
+
+@mixin laptop-l {
+  @media (max-width: v.$laptop-l) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: v.$desktop) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (min-width: 769px) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin theme($property, $light, $dark) {
+  #{$property}: $light;
+
+  body.dark & {
+    #{$property}: $dark;
+  }
+}
+
+@mixin no-scroll {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+@mixin button {
+  border-radius: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  height: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: v.$btn-color;
+  cursor: pointer;
+  color: v.$color-white;
+  padding: 0.5rem 1rem;
+  transition:
+    box-shadow ease-in-out 0.3s,
+    background-color ease-in-out 0.1s,
+    letter-spacing ease-in-out 0.1s,
+    transform ease-in-out 0.5s;
+  box-shadow: v.$shadows-btn;
+  min-width: 10rem;
+
+  &:hover {
+    box-shadow: v.$shadows-btn-hover;
+    transform: scale(0.99);
+  }
+  &:active {
+    box-shadow:
+      v.$shadows-btn-hover,
+      v.$color-primary 0 0 1.5rem 0.25rem;
+    background-color: v.$color-primary;
+    transform: scale(0.95);
+  }
+
+  [data-theme="light"] & {
+    color: v.$color-black;
+    background-color: v.$btn-color-light;
+    box-shadow: v.$shadows-btn-light;
+    &:hover {
+      box-shadow: v.$shadows-btn-light-hover;
+    }
+    &:active {
+      box-shadow:
+        v.$shadows-btn-light-hover,
+        v.$color-primary-light 0 0 1.5rem 0.25rem;
+      background-color: v.$color-primary-light;
+    }
+  }
+}
+
+@mixin accent-btn {
+  color: v.$color-black;
+  background-color: v.$color-primary;
+}
+
+@mixin modal {
+  width: 100dvw;
+  height: 100dvh;
+  background: none;
+  @include flex-center;
+  justify-content: center;
+  box-sizing: content-box;
+  margin: auto;
+  padding: 1em;
+
+  &:not([open]) {
+    display: none;
+  }
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-container {
+    @include flex-column();
+    min-width: 25rem;
+    padding: 2rem 3rem;
+    gap: 1rem;
+    border-radius: 2rem;
+    background-color: v.$color-dark-80;
+
+    .modal-section {
+      @include flex-column;
+      align-items: start;
+      padding: 1rem;
+      box-shadow: v.$shadows-btn;
+      background-color: v.$color-dark;
+      border-radius: 1rem;
+      max-width: 30rem;
+      width: 100%;
+      gap: 1rem;
+
+      [data-theme="light"] & {
+        background-color: v.$color-light;
+        box-shadow: v.$shadows-btn-light;
+      }
+    }
+  }
+
+  [data-theme="light"] & .modal-container {
+    background: v.$color-light;
+  }
+}
+
+@mixin background {
+  --mx: 0;
+  --my: 0;
+  --bg-1: #0000;
+  --bg-2: #232020;
+  --bg-3: #1e1e1e;
+  --a-x: calc(var(--mx) * 8px);
+  --a-y: calc(var(--my) * 8px);
+  --b-x: calc(var(--mx) * -6px);
+  --b-y: calc(var(--my) * -6px);
+  --c-x: calc(var(--mx) * 4px);
+  --c-y: calc(var(--my) * 4px);
+
+  [data-theme="light"] & {
+    --bg-1: #0000;
+    --bg-2: #e8e8e8;
+    --bg-3: #dfdfdf;
+  }
+
+  background:
+    repeating-linear-gradient(
+        45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(0px + var(--c-x)) calc(0px + var(--c-y)),
+    repeating-linear-gradient(
+        45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(32px + var(--a-x)) calc(32px + var(--a-y)),
+    repeating-linear-gradient(
+        -45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(0px + var(--b-x)) calc(0px + var(--b-y)),
+    repeating-linear-gradient(
+        -45deg,
+        var(--bg-1) calc(-650% / 13) calc(50% / 13),
+        var(--bg-2) 0 calc(100% / 13),
+        var(--bg-1) 0 calc(150% / 13),
+        var(--bg-2) 0 calc(200% / 13),
+        var(--bg-1) 0 calc(250% / 13),
+        var(--bg-2) 0 calc(300% / 13)
+      )
+      calc(32px + var(--a-x)) calc(32px + var(--a-y)) var(--bg-3);
+
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  inset: 0;
+  z-index: -1;
+  transition: background-position 160ms linear;
+}
