@@ -1,5 +1,6 @@
 import "@/styles/counters.scss";
 import { el } from "@/js/utils/utils.js";
+import { getNumberOfCards } from "@/js/utils/getNumberOfCards.js";
 
 export default function renderCounters({ counter }) {
   const countersWrapper = el("div", {
@@ -21,12 +22,17 @@ export default function renderCounters({ counter }) {
   const pairsCounter = el("span", {
     className: "pairs",
     id: "pairs",
-    text: `${counter.pairs}`,
+    text: counter.pairs,
+  });
+  const pairsTotal = el("span", {
+    className: "pairs",
+    id: "total",
+    text: ` / ${getNumberOfCards()}`,
   });
   const stepsCounter = el("span", {
     className: "steps",
     id: "steps",
-    text: `${counter.steps}`,
+    text: counter.steps,
   });
   const timerCounter = el("span", {
     className: "timer",
@@ -34,7 +40,7 @@ export default function renderCounters({ counter }) {
     text: "00:00",
   });
 
-  pairs.append(pairsCounter);
+  pairs.append(pairsCounter, pairsTotal);
   steps.append(stepsCounter);
   timer.append(timerCounter);
   countersWrapper.append(pairs, steps, timer);

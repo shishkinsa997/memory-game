@@ -19,13 +19,14 @@
   pointer-events: none;
 
   @media (orientation: portrait) {
+    @include flex-center;
     flex-direction: row;
-    width: 20rem;
-    gap: 1rem;
-    right: 50%;
-    transform: translate(50%, 50%);
-    bottom: 6rem;
+    margin: 0 auto;
+    width: fit-content;
+    right: auto;
     top: auto;
+    bottom: 6rem;
+    gap: 1rem;
     border-radius: 1rem;
   }
 }
