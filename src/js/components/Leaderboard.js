@@ -1,5 +1,6 @@
 import "@/styles/modal.scss";
 import { renderModal } from "@/js/components/Modal.js";
+import { scoreDefault } from "@/js/state.js";
 import { el, formatDate } from "@/js/utils/utils.js";
 
 const leaderEasy = el("ol", {
@@ -23,6 +24,15 @@ const leaderHard = el("ol", {
     "data-difficulty": "hard",
   },
 });
+const clearBtn = el("button", {
+  className: "clear-btn btn",
+  text: "Clear board",
+});
+
+clearBtn.addEventListener("click", () => {
+  localStorage.setItem("score", JSON.stringify(scoreDefault));
+  updateBoard();
+});
 
 const createLi = (li) => {
   return el("li", {
@@ -36,6 +46,7 @@ function renderLeaderboard() {
     name: "leaderboard",
     title: "Leaderboard",
     content: [leaderEasy, leaderNormal, leaderHard],
+    button: clearBtn,
   });
 
   updateBoard();
