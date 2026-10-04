@@ -24,13 +24,13 @@
 
 ## Скриншот
 
-![Скриншот приложения](path/to/screenshot.png)
+![Скриншот приложения](screenshot.png)
 
 ## Локальный запуск
 
 ### Необходимые условия
 
-- Node.js (версия 18 или выше) — если используются сборщики/зависимости
+- Node.js (версия 18 или выше)
 - Любой современный браузер (Chrome, Firefox, Edge, Safari)
 
 ### Установка зависимостей
@@ -40,16 +40,6 @@ npm install
 ```
 
 ### Запуск
-
-Если приложение не требует сборки и состоит из статических файлов:
-
-```bash
-npx serve .
-```
-
-или откройте `index.html` напрямую в браузере.
-
-Если используется сборщик (Vite, Webpack и т.п.):
 
 ```bash
 npm run dev
@@ -74,15 +64,45 @@ npm run build
 ```
 memory-game/
 ├── index.html
-├── styles/
-│   └── style.css
-├── scripts/
-│   ├── main.js
-│   ├── game.js
-│   ├── ui.js
-│   ├── modal.js
-│   └── storage.js
-└── README.md
+├── package.json
+├── public
+|  └── favicon.ico
+├── README.md
+├── requirements.md
+├── src
+|  ├── js
+|  |  ├── components
+|  |  |  ├── Card.js
+|  |  |  ├── Counters.js
+|  |  |  ├── GameField.js
+|  |  |  ├── GameOver.js
+|  |  |  ├── Header.js
+|  |  |  ├── Leaderboard.js
+|  |  |  ├── Modal.js
+|  |  |  └── NewGameBtn.js
+|  |  ├── main.js
+|  |  ├── screens
+|  |  |  └── GameScreen.js
+|  |  ├── state.js
+|  |  ├── svgCards
+|  |  |  ├── cards.data.js
+|  |  |  ├── cards.js
+|  |  |  ├── convert-icons.mjs
+|  |  |  └── renderIcon.js
+|  |  └── utils
+|  |     ├── getNumberOfCards.js
+|  |     ├── getRandom.js
+|  |     └── utils.js
+|  └── styles
+|     ├── card.scss
+|     ├── counters.scss
+|     ├── game-field.scss
+|     ├── header.scss
+|     ├── main.scss
+|     ├── modal.scss
+|     ├── _mixins.scss
+|     └── _variables.scss
+└── vite.config.js
 ```
 
 ## Функциональность
@@ -100,7 +120,7 @@ memory-game/
 
 ## Самооценка
 
-**Итого: XX / 100**
+**Итого: 105 / 100**
 
 | Критерий                           | Баллы   | Комментарий                                              |
 | ---------------------------------- | ------- | -------------------------------------------------------- |
