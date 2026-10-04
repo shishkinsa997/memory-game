@@ -46,7 +46,8 @@
   }
 
   .backdrop {
-    background-color: v.$color-secondary;
+    // background-color: v.$color-secondary;
+    @include card-back;
   }
 
   @include hover {
