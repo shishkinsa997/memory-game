@@ -1,0 +1,32 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.counters {
+  position: absolute;
+  @include flex-column;
+  align-items: start;
+  right: 0;
+  top: 10rem;
+  z-index: 20;
+  width: 10rem;
+  height: auto;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: v.$shadows-btn;
+  border-radius: 1rem 0 0 1rem;
+  font-size: 1.2rem;
+  pointer-events: none;
+
+  @media (orientation: portrait) {
+    @include flex-center;
+    flex-direction: row;
+    margin: 0 auto;
+    width: fit-content;
+    right: auto;
+    top: auto;
+    bottom: 6rem;
+    gap: 1rem;
+    border-radius: 1rem;
+  }
+}

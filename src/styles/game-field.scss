@@ -1,0 +1,36 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.game {
+  @include container;
+  @include flex-center;
+  padding: 1rem;
+  width: 60dvw;
+  min-width: 500px;
+  max-width: 800px;
+  transition: all 0.5s ease-in-out;
+
+  @media (orientation: portrait) {
+    min-width: 95dvw;
+  }
+
+  .game-grid {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    @media (orientation: portrait) {
+      gap: 0.5rem;
+    }
+  }
+
+  .grid-8 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid-15 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .grid-21 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

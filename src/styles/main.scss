@@ -1,0 +1,65 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  @include no-scroll;
+}
+
+body {
+  @include inter;
+  @include background;
+  min-height: 100dvh;
+  color: v.$color-light;
+
+  [data-theme="light"] & {
+    color: v.$color-black;
+  }
+}
+
+#app {
+  @include container;
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  @include flex-column;
+  gap: 6.25rem;
+  margin: 1.25rem 0 6.25rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.section {
+  @include container;
+  @include flex-center;
+  position: relative;
+}
+
+.btn {
+  @include button;
+}
+
+dialog {
+  & > * {
+    color: v.$color-light;
+  }
+}

@@ -1,0 +1,50 @@
+@use "_variables.scss" as v;
+@use "_mixins.scss" as *;
+
+.header {
+  @include flex-center;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 1rem;
+
+  .header-inner {
+    @include flex-center;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    width: 100%;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    height: 0.1rem;
+    width: 100dvw;
+    background-color: v.$color-primary;
+  }
+
+  .new-game {
+    @include accent-btn;
+  }
+
+  .filter-bar {
+    @include flex-between;
+    background-color: v.$color-black;
+    box-shadow: v.$shadows-tabs;
+    padding: 0.3rem 0.5rem;
+    border-radius: 2rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .filter-tab-active {
+    background-color: v.$color-dark;
+  }
+}
